@@ -4,7 +4,6 @@ import 'package:sewoch/user_modle.dart';
 
 class ChatUserList extends StatelessWidget {
   const ChatUserList({super.key});
-
   @override
   Widget build(BuildContext context) {
     List<UserModel> userList = [

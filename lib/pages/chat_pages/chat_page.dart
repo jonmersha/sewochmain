@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sewoch/pages/chat_pages/chat_user_list.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
@@ -12,7 +11,9 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      body: CustomScrollView(
+      body:
+
+      CustomScrollView(
         slivers: [
           SliverAppBar(
             pinned: true,

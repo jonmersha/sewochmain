@@ -14,7 +14,7 @@ class _ChatHistoryState extends State<ChatHistory> {
   void gotoPage(){
     setState(() {
       Navigator.of(context).push(
-          MaterialPageRoute(builder: (context)=>FriendChatScreen())
+          MaterialPageRoute(builder: (context)=>const FriendChatScreen())
       );
 
     });
@@ -37,7 +37,7 @@ class _ChatHistoryState extends State<ChatHistory> {
     return Scaffold(
       body:
       CustomScrollView(
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         slivers: <Widget>[
           SliverList(
               delegate: SliverChildBuilderDelegate(
