@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:sewoch/pages/chat_pages/widgets/chat_item_widget.dart';
-import 'package:sewoch/pages/contacts/contact_detail_page.dart';
 
 
 class Contacts extends StatefulWidget {
@@ -40,6 +39,7 @@ class _ContactsState extends State<Contacts> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(body: _body(),);
+
   }
   Widget _body() {
     if (_permissionDenied) return const Center(child: Text('Permission denied'));
@@ -67,20 +67,24 @@ Widget customScrolView(List<Contact>? userList)  {
                     // return "Data fetched from inline function!";
                     await FlutterContacts.getContact(userList[index].id);
                   })();
-                  Contact contact=fullacontact!;
+                  //Contact contact=fullacontact!;
 
 
-                return  phoneContactWidget(
-                   onTapFunc: ()  async {
-                     final fullContact =  await FlutterContacts.getContact(userList[index].id);
-                     Navigator.of(context).push(
-                         MaterialPageRoute(builder: (context)=> ContactDetailPage(fullContact!))
-                     );
-                   },
-                    username: userList[index].displayName,
-                    id:userList[index].displayName,
-                   avatar:fullacontact!,
-                    isOnline: false);
+                return ContactUpdate(contactId: userList[index].id,);
+
+
+
+                  // phoneContactWidget(
+                  //  onTapFunc: ()  async {
+                  //    final fullContact =  await FlutterContacts.getContact(userList[index].id);
+                  //    Navigator.of(context).push(
+                  //        MaterialPageRoute(builder: (context)=> ContactDetailPage(fullContact!))
+                  //    );
+                  //  },
+                  //   username: userList[index].displayName,
+                  //   id:userList[index].displayName,
+                  // // avatar:fullacontact!,
+                  //   isOnline: false);
               } ))
     ],
   );

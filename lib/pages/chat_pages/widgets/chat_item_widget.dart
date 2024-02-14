@@ -1,11 +1,11 @@
-import 'dart:typed_data';
 
 //import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_contacts/flutter_contacts.dart';
 
 Widget chatItemWidget(
-    {Function()? onTapFunc,
+    {
+      Function()? onTapFunc,
     Function()? horizontal,
     String? username,
     String? lastMessage,
@@ -78,7 +78,8 @@ Widget chatItemWidget(
       String? username,
       String? id,
 
-      bool isOnline = false, required Contact avatar,
+      bool isOnline = false,
+      Contact? avatar,
     })   {
 
   // var fullContact =  FlutterContacts.getContact(id!);
@@ -143,16 +144,42 @@ Widget chatItemWidget(
   );
 }
 class ContactUpdate extends StatefulWidget {
+  final String contactId;
 
-  const ContactUpdate({super.key});
+  const ContactUpdate({super.key,required this.contactId});
 
   @override
   State<ContactUpdate> createState() => _ContactUpdateState();
 }
 
 class _ContactUpdateState extends State<ContactUpdate> {
+   //late Contact  contact;
+  // //late
+  // @override
+  void initState()  {
+    // TODO: implement initState
+    super.initState();
+    print(widget.contactId);
+   // setState(() async {
+   //   final fullcontact =  await FlutterContacts.getContact(widget.contactId);
+   //
+   //   contact=fullcontact!;
+   //   //print(contact.displayName);
+   //
+   // });
+  }
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return// Column(children: [
+      Column(
+        children: [
+          Text("contact ID:${widget.contactId}"),
+          //Text("contact ID:${contact.displayName}"),
+        ],
+      );
+      //Text(contact.displayName),
+      //Text('${contact.photoOrThumbnail}')
+
+    //],);
   }
 }
