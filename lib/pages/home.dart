@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sewoch/pages/chat_pages/chat_history.dart';
-import 'package:sewoch/pages/contacts/contacts.dart';
+import 'package:sewoch/pages/contacts/my_contacts.dart';
+
+import 'contacts/images.dart';
 
 
 class HomePage extends StatelessWidget {

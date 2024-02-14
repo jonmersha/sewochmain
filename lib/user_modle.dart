@@ -4,5 +4,4 @@
   String? userName;
   String? latestChat;
   bool isOnline;
-
  }

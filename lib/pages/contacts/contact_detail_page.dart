@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_contacts/flutter_contacts.dart';
+import 'dart:typed_data';
 
 class ContactDetailPage extends StatefulWidget {
   final Contact contact;
@@ -11,8 +12,11 @@ class ContactDetailPage extends StatefulWidget {
 }
 
 class _ContactDetailPageState extends State<ContactDetailPage> {
+
   @override
   Widget build(BuildContext context) {
+     //Uint8List?  photoOrThumbnail => photo ?? thumbnail;
+
     return Scaffold(
         body: CustomScrollView(
       slivers: [
@@ -22,7 +26,7 @@ class _ContactDetailPageState extends State<ContactDetailPage> {
           expandedHeight: 100,
           title: const Text('User Name'),
           backgroundColor: Colors.teal[800],
-          flexibleSpace:  FlexibleSpaceBar(
+          flexibleSpace:  const FlexibleSpaceBar(
             title: Text('Sewoch'),
           ),
 
@@ -32,13 +36,28 @@ class _ContactDetailPageState extends State<ContactDetailPage> {
         SliverFillRemaining(
           child: Column(
             children: [
-              Text("${widget.contact.phones.first.number}"),
-              Text("${widget.contact.phones.first.customLabel}"),
-              Text("${widget.contact.phones.first.normalizedNumber}"),
-              Text("${widget.contact.name.first}"),
-              Text("${widget.contact.name.last}"),
-              Text("${widget.contact.name.firstPhonetic}"),
-              Text("${widget.contact.emails.length}"),
+              Text(widget.contact.phones.first.number),
+              Text(widget.contact.phones.first.customLabel),
+              Text(widget.contact.phones.first.normalizedNumber),
+              Text(widget.contact.name.first),
+              Text(widget.contact.name.last),
+              Text(widget.contact.name.firstPhonetic),
+             // Text("${widget.contact.photoOrThumbnail}"),
+             Image.memory(widget.contact.photoOrThumbnail!)
+             // Image.memory(widget.contact.photoOrThumbnail!),
+
+
+        //   Container(
+        //   width: 200.0,
+        //   height: 200.0,
+        //   decoration: BoxDecoration(
+        //     image: DecorationImage(
+        //       image: Image.memory((widget.contact."":"") as Uint8List).image,
+        //       fit: BoxFit.cover,
+        //     ),
+        //   ),
+        // )
+
             ],
           ),
         )

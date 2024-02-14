@@ -1,3 +1,6 @@
+import 'dart:typed_data';
+
+//import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_contacts/flutter_contacts.dart';
 
@@ -74,15 +77,17 @@ Widget chatItemWidget(
       Function()? horizontal,
       String? username,
       String? id,
-      bool isOnline = false})   {
+
+      bool isOnline = false, required Contact avatar,
+    })   {
 
   // var fullContact =  FlutterContacts.getContact(id!);
   //Contact contact=fullContact as Contact;
-
+//avatar![0].
   return GestureDetector(
     onTap: onTapFunc,
     child: Container(
-      height: 90,
+      //height: 90,
       padding: const EdgeInsets.symmetric(horizontal: 10),
       margin: const EdgeInsets.only(bottom: 5, left: 5, right: 5),
       decoration: BoxDecoration(
@@ -94,10 +99,8 @@ Widget chatItemWidget(
           CircleAvatar(
             radius: 20,
             backgroundColor: !isOnline ? Colors.grey : Colors.green,
-            child: const Icon(
-              Icons.person,
-              size: 35,
-            ),
+            child: (avatar != null)?  Container(child: Image.memory(avatar.photoOrThumbnail!)):
+            Container(child: Text(avatar.toString()),)
           ),
           const VerticalDivider(
             width: 5,
