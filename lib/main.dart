@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sewoch/pages/home.dart';
+import 'package:sewoch/bottom_navigation.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -15,11 +16,10 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      home: const BottomNavigation(),
     );
   }
 }
