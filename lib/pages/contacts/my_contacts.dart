@@ -1,6 +1,11 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_contacts/flutter_contacts.dart';
+import 'package:get/get.dart';
+import 'package:sewoch/controller/contact_controller.dart';
 import 'package:sewoch/pages/chat_pages/widgets/chat_item_widget.dart';
+import 'package:sewoch/pages/chat_pages/widgets/contact_repo.dart';
 
 
 class Contacts extends StatefulWidget {
@@ -47,46 +52,37 @@ class _ContactsState extends State<Contacts> {
     return customScrolView(_contacts);
   }}
 Widget customScrolView(List<Contact>? userList)  {
+  final fullContact=Get.put(ContactController(userList!));
+  return GetX<ContactController>(builder: (controller) {
+    return !fullContact.isLoading.value?  getList(controller.detailedContact!):Text("Is loading");});
+
+}
+Widget getList(List<Contact> contacts){
+  print(contacts.length);
   return CustomScrollView(
     //physics: const NeverScrollableScrollPhysics(),
     slivers: <Widget>[
       SliverList(
           delegate: SliverChildBuilderDelegate(
-              childCount: userList!.length,
+              childCount: contacts.length,
                   (BuildContext context, int index)  {
-                    // Contact contact=Contact();
-                  //  Contact contact=[];
-                    //=() async {
-                  // final Contact contact=cont!;
-                      //return cont!;
-                   // } as Contact;
-
-                  final fullacontact  =  (() async {
-                    // Your asynchronous operations go here
-                    // await Future.delayed(Duration(seconds: 2));
-                    // return "Data fetched from inline function!";
-                    await FlutterContacts.getContact(userList[index].id);
-                  })();
-                  //Contact contact=fullacontact!;
-
-
-                return ContactUpdate(contactId: userList[index].id,);
-
-
-
-                  // phoneContactWidget(
-                  //  onTapFunc: ()  async {
-                  //    final fullContact =  await FlutterContacts.getContact(userList[index].id);
-                  //    Navigator.of(context).push(
-                  //        MaterialPageRoute(builder: (context)=> ContactDetailPage(fullContact!))
-                  //    );
-                  //  },
-                  //   username: userList[index].displayName,
-                  //   id:userList[index].displayName,
-                  // // avatar:fullacontact!,
-                  //   isOnline: false);
+                Contact contact=contacts[index];
+                return  Row(
+                  children: [
+                   CircleAvatar(
+                     radius: 25,
+                     child: (contact.photoOrThumbnail !=null)?Image.memory(contact.photoOrThumbnail!):Icon(Icons.person),
+                   ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("${contacts[index].displayName}"),
+                        contact.phones.isNotEmpty ? Text("${contacts[index].phones.first.number}"):Text("No number"),
+                      ],
+                    ),
+                  ],
+                );
               } ))
     ],
   );
-
 }

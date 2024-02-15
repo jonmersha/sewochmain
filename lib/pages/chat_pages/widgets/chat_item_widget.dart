@@ -2,6 +2,8 @@
 //import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_contacts/flutter_contacts.dart';
+import 'package:get/get.dart';
+import 'package:sewoch/controller/contact_controller.dart';
 
 Widget chatItemWidget(
     {
@@ -82,9 +84,6 @@ Widget chatItemWidget(
       Contact? avatar,
     })   {
 
-  // var fullContact =  FlutterContacts.getContact(id!);
-  //Contact contact=fullContact as Contact;
-//avatar![0].
   return GestureDetector(
     onTap: onTapFunc,
     child: Container(
@@ -142,44 +141,4 @@ Widget chatItemWidget(
       ),
     ),
   );
-}
-class ContactUpdate extends StatefulWidget {
-  final String contactId;
-
-  const ContactUpdate({super.key,required this.contactId});
-
-  @override
-  State<ContactUpdate> createState() => _ContactUpdateState();
-}
-
-class _ContactUpdateState extends State<ContactUpdate> {
-   //late Contact  contact;
-  // //late
-  // @override
-  void initState()  {
-    // TODO: implement initState
-    super.initState();
-    print(widget.contactId);
-   // setState(() async {
-   //   final fullcontact =  await FlutterContacts.getContact(widget.contactId);
-   //
-   //   contact=fullcontact!;
-   //   //print(contact.displayName);
-   //
-   // });
-  }
-  @override
-  Widget build(BuildContext context) {
-    return// Column(children: [
-      Column(
-        children: [
-          Text("contact ID:${widget.contactId}"),
-          //Text("contact ID:${contact.displayName}"),
-        ],
-      );
-      //Text(contact.displayName),
-      //Text('${contact.photoOrThumbnail}')
-
-    //],);
-  }
 }
