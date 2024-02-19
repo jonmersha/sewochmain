@@ -28,7 +28,7 @@ SliverAppBar buildSliverAppBarChatPage() {
       ],
     ),
     pinned: true,
-    backgroundColor: Colors.teal[300],
+    backgroundColor: Colors.green[600],
     expandedHeight: 180.0,
     flexibleSpace: FlexibleSpaceBar(
       collapseMode: CollapseMode.pin,

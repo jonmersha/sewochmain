@@ -1,45 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_contacts/flutter_contacts.dart';
-import 'package:sewoch/chat_module/wigets/image_decoration.dart';
-
-// Widget contactCard(List<Contact> contact) {
-//   return CustomScrollView(
-//     //physics: const NeverScrollableScrollPhysics(),
-//     slivers: <Widget>[
-//       SliverList(
-//           delegate: SliverChildBuilderDelegate(childCount: contact.length,
-//               (BuildContext context, int index) {
-//         return Container(
-//           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-//           child: Row(
-//             children: [
-//               Container(
-//                 height: 60,
-//                 width: 60,
-//                 decoration: BoxDecoration(
-//                     borderRadius: BorderRadius.circular(30),
-//                     image: decorationImageContact()),
-//               ),
-//               const SizedBox(
-//                 width: 5,
-//               ),
-//               Column(
-//                 crossAxisAlignment: CrossAxisAlignment.start,
-//                 children: [
-//                   Text(contact[index].displayName,
-//                       style:
-//                           const TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
-//                   //                  contact.phones.isNotEmpty ? Text("${contacts[index].phones.first.number}"):Text("No number"),
-//                 ],
-//               ),
-//             ],
-//           ),
-//         );
-//       }))
-//     ],
-//   );
-// }
-
+import 'package:sewoch/chat_module/widgets/image_decoration.dart';
 Widget getList(List<Contact> contacts, bool isDetail) {
   return CustomScrollView(
     //physics: const NeverScrollableScrollPhysics(),
@@ -61,16 +22,16 @@ Widget getList(List<Contact> contacts, bool isDetail) {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    height: 60,
-                    width: 60,
+                    height: 50,
+                    width: 50,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(25),
                         image: isDetail
                             ? decorationImageDetailContact(contact)
                             : decorationImageContact()),
                   ),
                   const SizedBox(
-                    width: 5,
+                    width: 10,
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,7 +39,7 @@ Widget getList(List<Contact> contacts, bool isDetail) {
                       Text(
                         contacts[index].displayName,
                         style: const TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w400),
+                            fontSize: 16, fontWeight: FontWeight.w600),
                       ),
                       if (isDetail) phoneNumber(contacts[index])
                     ],
@@ -96,6 +57,6 @@ Widget getList(List<Contact> contacts, bool isDetail) {
 Widget phoneNumber(Contact contact) {
   return contact.phones.isNotEmpty
       ? Text(contact.phones.first.normalizedNumber,
-          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400))
+          style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w400))
       : const Text("");
 }
