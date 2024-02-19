@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sewoch/chat_module/pages/contacts/my_contacts.dart';
 import 'package:sewoch/chat_module/widgets/app_bars.dart';
-import 'package:sewoch/pages/chat_pages/chat_history.dart';
-import 'package:sewoch/pages/contacts/my_contacts.dart';
+import 'package:sewoch/chat_module/chat_history.dart';
 
 class ChatHomePage extends StatelessWidget {
   const ChatHomePage({super.key});

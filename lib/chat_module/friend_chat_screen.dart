@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sewoch/pages/chat_pages/widgets/chat_item_widget.dart';
+import 'package:sewoch/chat_module/widgets/chat_item_widget.dart';
 import 'package:sewoch/user_modle.dart';
 
 class FriendChatScreen extends StatefulWidget {

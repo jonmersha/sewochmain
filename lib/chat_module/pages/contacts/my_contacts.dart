@@ -56,11 +56,11 @@ class _ContactsState extends State<Contacts> {
     final fullContacts = Get.put(ContactController());
 
     return GetX<ContactController>(builder: (controller) {
-      return (!fullContacts.isLoading.value
-          ? getList(controller.detailedContact!, true)
+      return !fullContacts.isLoading.value
+          ? getList(controller.detailedContact, true)
           : (!fullContacts.isLoadingContact.value
-              ? getList(controller.contacts!, false)
-              : const Center(child: CircularProgressIndicator())));
+              ? getList(controller.contacts, false)
+              : const Center(child: CircularProgressIndicator()));
     });
   }
 }
